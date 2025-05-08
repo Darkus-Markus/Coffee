@@ -61,7 +61,7 @@ struct items {
     int compas;
     int watch;
     bool phone = false;
-    object heal;
+    //object heal;
 };
 
 struct info {
@@ -158,22 +158,37 @@ struct object {
     int map;
 };
 
-struct items_house {
+struct box {
+    int sandwich;
+    int knife;
+};
 
+struct items_house {
     int note;
     int watch;
     int mirror;
-    object box;
+    struct box;
 };
 
 struct inventory {
-    std::string items [8];
+    std::string items[8];
     int QuantityItems = 0;
-    void item(std::string items) {
-
+    void item(std::string item) {
+        if (QuantityItems < 8) {
+            items[QuantityItems] = item;
+            QuantityItems++;
+        }
+        else {
+            std::cout << "Слишком много вещей,избавься от лишнего\n";
+        }
+    }
+    void ShowInv() {
+        std::cout << "Инвентарь: \n";
+        for (int i = 0; i < QuantityItems; i++) {
+            std::cout << "-\n" << items[i];
+        }
     }
 };
-
 void InitGame() {
     std::cout << "Вокруг лес, окутанный серой дымкой.\n";
     std::cout << "Стволы деревьев теряются в ней, словно растворяясь между сном и явью.\n";
@@ -195,13 +210,24 @@ void InitGame() {
         std::cout << "нужно трижды выиграть в камень,ножницы,бумага\n";
         x.game();
     }
-    else if (user.ch == "right") {
+    if (user.ch == "right") {
         std::cout << "Свернув направо Алекс заходит в дом обросший мхом\n";
-        dom();
+        std::cout << "Чтобы изучить дом написать - look\n";
+        std::cin >> user.ch;
+        if (user.ch == "look") {
+            std::cout << "note - записка\nПрочитать - read\n";
+            std::cout << "watch - часы. Глядя на них, Алекс замечает что они остановились\n";
+            std::cout << "Забрать часы? - pick\n";
+            std::cout << "mirror - разбитое зеркало. Посмотрев в него, Алекс не узнаёт себя\n";
+            std::cout << "Забрать зеркало? - pick\n";
+            std::cout << "box - пыльная коробка.\n";
+            std::cout << "Открыть коробку? - open\n";
+        }
     }
-    else {
-        std::cout << "ERROR";
-    }
+    
+    //else {
+      //  std::cout << "ERROR";
+    //}
 }
 
 
