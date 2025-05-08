@@ -110,7 +110,7 @@ public:
 
 };
 
-items a;
+items a;//
 p x;
 
 info user;
