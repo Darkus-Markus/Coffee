@@ -235,6 +235,21 @@ int main() {
     setlocale(LC_ALL, "Russian");
     SetConsoleCP(1251);
     srand(time(NULL));
-    InitGame();
+    //InitGame();
+
+
+    int numbers[5]{ 1,2,3,4,5 };
+    for (int i = 4;i >= 0;i--) {
+        //if (numbers[i] == 5 || numbers[i] == 2) {
+
+            std::cout << numbers[i];
+        //}
+       
+    }
+
+
+
+
+
 
 }
